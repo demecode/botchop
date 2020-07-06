@@ -1,0 +1,33 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi there", "How are you", "Is anyone there?","Hey","Hola", "Hello", "Good day", "Hi"],
+         "responses": ["Hi! I'm Weedo. Are you interested in accessing medical marijuana?"],
+         "context": [""]
+        },
+    {"tag": "conversation_1",
+         "patterns": ["Yes", "Yes I am", "Yup", "Sure thing"],
+         "responses": ["Great. Do you suffer from any of the following conditions?: Cancer, Anxiety, Depression"],
+         "context": [""]
+        },
+      {"tag": "conversation_2",
+         "patterns": ["Yes", "Yes I do", "Yup"],
+         "responses": ["Okay. Fill in this short form nsdsnddsnk and we'll get you registered on the medical CBD access priority list."],
+         "context": [""]
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye", "Nice chatting to you, bye", "Till next time"],
+         "responses": ["See you!", "Have a nice day", "Bye! Come back again soon."],
+         "context": [""]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful", "Awesome, thanks", "Thanks for helping me"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"],
+         "context": [""]
+        },
+        {"tag": "noanswer",
+         "patterns": [],
+         "responses": ["Sorry, can't understand you", "Please give me more info", "Not sure I understand"],
+         "context": [""]
+        }
+     ]
+}
