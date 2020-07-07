@@ -6,12 +6,17 @@
         },
     {"tag": "conversation_1",
          "patterns": ["Yes", "Yes I am", "Yup", "Sure thing"],
-         "responses": ["Great. Do you suffer from any of the following conditions?: Cancer, Anxiety, Depression"],
+         "responses": ["Great. Do you suffer from any of the following conditions? Cancer, Anxiety, Depression"],
          "context": [""]
         },
       {"tag": "conversation_2",
          "patterns": ["Yes", "Yes I do", "Yup"],
          "responses": ["Okay. Fill in this short form nsdsnddsnk and we'll get you registered on the medical CBD access priority list."],
+         "context": [""]
+        },
+          {"tag": "conversation_3",
+         "patterns": ["No", "Nope", "Nah", "Not interested"],
+         "responses": ["Okay no worries. You can find out more information about medical marijuana here", "Please give me more info", "Not sure I understand"],
          "context": [""]
         },
         {"tag": "goodbye",

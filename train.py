@@ -14,7 +14,10 @@ import json
 import pickle  ## serialization of data
 
 import numpy as np
+import tensorflow as tf
+from tensorflow import keras
 from keras.models import Sequential
+from keras.layers import Dense, Dropout
 from keras.optimizers import SGD
 
 words = []
@@ -78,7 +81,6 @@ for doc in documents:
         print(output_row, 'NEVER LET ME DOWN')
         train.append([bag, output_row])
 
-
 # shuffle the features and turn into a np.array
 random.shuffle(train)
 train = np.array(train, dtype=object)
@@ -86,11 +88,26 @@ print(train)
 
 # now we want to create test lists using X - patterns, y - intents
 #
-train_x = list(train[:,0])
-train_y = list(train[:,1])
+train_x = list(train[:, 0])
+train_y = list(train[:, 1])
 print(train_x, "X DATA")
 print(train_y, "Y DATA")
 
-
 # now to create the model
 
+model = Sequential()
+model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(64, activation='relu'))
+model.add(Dropout(0.5))
+model.add(Dense(len(train_y[0]), activation='softmax'))
+
+# Compile model. Stochastic gradient descent with Nesterov accelerated gradient gives good results for this model
+sgd = SGD(lr=0.01, decay=1e-6, momentum=0.9, nesterov=True)
+model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+
+# fitting and saving the model
+final = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=5, verbose=1)
+model.save('bot_model.h5', final)
+
+print("model created")
